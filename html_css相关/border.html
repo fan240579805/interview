@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="row"></div>
+
+    <div class="borderBlue">
+        <div class="snajiaox"></div>
+    </div>
+
+</body>
+
+<style>
+    /* border边框其实是由三角形组合而成的，当我们把盒子宽高值为0
+        他就会显示出4边，四块三角形，所以我们可以把其余三边设置为无色transparent
+        这样就只生一个三角形了
+     */
+    .row {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 50px 50px 50px 50px;
+        border-color: orange transparent transparent transparent;
+    }
+
+    .borderBlue {
+        position: relative;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 50px 0 50px 50px;
+        border-color: transparent transparent blue transparent;
+    }
+
+    .snajiaox {
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: -48px;
+        left: -48.5px;
+        border-style: solid;
+        border-width: 48px 48px 38px 0;
+        border-color: transparent transparent Yellow transparent;
+    }
+</style>
+
+</html>

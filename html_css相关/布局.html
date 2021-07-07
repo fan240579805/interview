@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        ② 实现步骤
+            1. 三个部分都设定为左浮动，否则左右两边内容上不去，就不可能与中间列同一行。
+                然后设置center的宽度为100%(实现中间列内容自适应)，
+                此时，left和right部分会跳到下一行
+            2. 通过设置margin-left为负值让left和right部分回到与center部分同一行
+            3. 通过设置父容器的padding-left和padding-right，让左右两边留出间隙
+            4. 通过设置相对定位，让left和right部分移动到两边。
+        -->
+    <div class="container">
+        <div class="center">
+            <h3>圣杯布局</h3>
+        </div>
+        <div class="left">L</div>
+        <div class="right">R</div>
+    </div>
+
+    <div class="flyContainer">
+        <div class="flyC">
+            <div class="content">双飞翼布局</div>
+        </div>
+        <div class="flyL">L</div>
+        <div class="flyR">R</div>
+    </div>
+</body>
+
+<style>
+    .container {
+        min-width: 400px;
+        padding: 0 100px 0 100px;
+    }
+
+    .center {
+        float: left;
+        height: 400px;
+        width: 100%;
+        background-color: red;
+
+    }
+
+    .left {
+        float: left;
+        height: 100px;
+        width: 100px;
+        text-align: center;
+        background-color: #d5d5d5;
+        margin-left: -100%;
+        position: relative;
+        left: -100px;
+    }
+
+    /* 圣杯布局和双飞翼布局都是这个原理。
+        元素写在后面，也可以通过使用负边距的方法让其显示在前面。 */
+    .right {
+        float: left;
+        height: 100px;
+        width: 100px;
+        background-color: yellow;
+        margin-left: -100px;
+        position: relative;
+        right: -100px;
+    }
+
+    /* 双飞翼布局 */
+    .flyContainer {
+        min-width: 400px;
+        padding: 0 100px 0 100px;
+
+    }
+    /* 主题内容多了个嵌套div 用margin控制 */
+    .content {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+
+    .flyC {
+        float: left;
+        height: 400px;
+        width: 100%;
+        background-color: rgb(76, 0, 255);
+
+    }
+
+    .flyR {
+        float: left;
+        width: 100px;
+        height: 400px;
+        background-color: rgb(15, 245, 27);
+        margin-left: -100px;
+    }
+
+
+    .flyL {
+        float: left;
+        width: 100px;
+        height: 400px;
+        background-color: yellow;
+        margin-left: -100%;
+
+    }
+</style>
+
+</html>

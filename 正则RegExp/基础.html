@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    /**
+     * \d 代表数字
+     * \w 数字，字母，下划线_
+     * \W 除了数字字母，下划线 如 @ #特殊符号
+     * \s 空格 \r \n 换行
+     * \S 除了空格
+     * 
+     * ^ 开始边界
+     * $ 结束边界
+     * 
+     * . 除了换行符的所有字符
+     * + 前面的字符1个或多个
+     * * 0或多个
+     * ？可以不存在
+     * 
+     * 模式
+     * g  全局
+     * i  大写也匹配
+     * m  每行单独匹配
+     * u  正确识别复杂字节字符
+     */
+
+    // 原子表 [123] 表示字符串中有1或2或3,123我都要
+    // let reg = /[123]/g;
+    // const str = "213123";
+    // console.log(str.match(reg));
+    // let url = "https://www.baidu.com"
+    // const regUrl = /https?:\/\/\w+\.\w+\.\w+/
+    // console.log(url.match(regUrl));
+
+    // // 1. 例子：用户名必须以字母开头 5-10长度
+    // const reguser = /^[a-z]\w{4,9}$/;
+    // const res = prompt("输入用户名")
+    // console.log(reguser.test(res));
+
+    let span = `
+        <span>
+            asdas
+            hand
+        </span>
+    `
+    // 所有内容[\s\S]都可以取
+    console.log(span.match(/<span>[\s\S]+<\/span>/)[0]);
+    
+    // 字符属性 \p{}
+    const hd = "asdasdas2011.你好,加油";
+    console.log(hd.match(/\p{L}/gu)); // L属性匹配字
+    console.log(hd.match(/\p{P}/gu)); // P属性匹配标点符号
+    console.log(hd.match(/\p{sc=Han}/gu));// 汉字匹配
+</script>
+
+</html>

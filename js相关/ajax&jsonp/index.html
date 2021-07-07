@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./手写ajax+promise.js"></script>
+    <script type="text/javascript">
+        function sayHello(data){
+            alert(JSON.stringify(data));
+        }
+        </script>
+    <script src="http://localhost:9998/api/JSONP?callback=sayHello"> </script>
+    <!-- <script src="http://localhost:9998" > </script>
+        标签的src也是具有发送请求(get)的功能，并且不受同源限制
+        所以可以在src中写上要跨域的地址，但是请求地址必须返回合法的js代码，这样标签才能解析 
+        函数定义在跨域标签前面，需要前后端配合，后端返回一个js代码并将服务器的结果以参数的形式放入js中 -->
+</body>
+
+</html>
