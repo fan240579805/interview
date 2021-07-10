@@ -30,6 +30,7 @@ function ES6deepClone(origin) {
         return origin;
     }
     let target = new origin.constructor();
+    // let newObj = Object.prototype.toString.call(obj) === "[object Array]" ? [] : {};
     for (let k in origin) {
         if (origin.hasOwnProperty(k)) {
             // 有可能value origin[k]还是一个数组/对象

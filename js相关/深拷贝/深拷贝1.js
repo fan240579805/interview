@@ -63,8 +63,10 @@ var testDeepClone = {
         },
     }
 }
+
 // 对 testDeepClone 进行深拷贝得到newnew
 const newnew = deepClone(testDeepClone, {});
+// const newnew = newDeep(testDeepClone);
 // 更改newnew得其中属性
 newnew.lalal.deep.hhh = 333;
 // lalal {deep: {hhh: 11, aaa: 22}}
