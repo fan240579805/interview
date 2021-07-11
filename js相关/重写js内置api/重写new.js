@@ -22,7 +22,7 @@ function test(a, b) {
  * 3. {}.__proto__ = 构造函数.prototype
  */
 function myNew() {
-    // 第一个参数为构造器，剩下的为实参要传递给构造函数
+    // 第1个参数为构造器，剩下的为实参要传递给构造函数
     // 对arguments不能直接调用api
     // 要call调用，并修改[]的this指向
     var constructor = [].shift.call(arguments);
