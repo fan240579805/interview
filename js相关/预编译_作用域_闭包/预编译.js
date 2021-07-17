@@ -38,9 +38,11 @@ test(3);
 
 // GO = global object 全局上下文 相当于window
 // 和 AO 比少了一步实参形参，如果AO 中能找到a则不去GO中找反之则去Go中找
+console.log("====================================");
+// ta();
 var ta = 2;
 function ta() {
-    console.log(2);
+    console.log("fun" + 2);
 }
 console.log(ta); //  2
 //     1. 寻找变量声明 var ta
@@ -51,24 +53,55 @@ console.log(ta); //  2
  *    ta:undefined(变量声明) -> function ta() -> 2
  * }
  */
+
 /**
  * 立即执行函数的AO问题
  * 立即执行函数是 函数表达式(function b() {}) 执行()，本质是表达式，也不会提升到顶部
  * 所以他不会进入AO/GO只用在他执行之后，才会进入自己的AO中
  */
+
+/**
+    * 1. 找到变量声明 var b ; (function b() {})是表达式不是声明
+    * 2. 无声明了，开始按顺序执行
+    * 3. b = 20 执行,function b()执行
+    * 4. 立即执行函数的AO = { b:undefined -> function b() }
+    * 5. function b()没有定义变量b，且立即执行函数 所以b是无法暗示全局变量，无法通过b=10改window.b
+    * 6. 打印 b ，从作用域链找到最顶部的b，也就是立即执行函数的AO的b -> function b()
+    * GO = {
+    *     b: undefined -> 20 -> 10(xxx 改不了10)
+    * }
+ */
 var b = 20;
 (function b() {
     b = 10;
     console.log(b);// f b(){...}
-})()
+    console.log(window.b);
+})();
 /**
- * 1. 找到变量声明 var b ; (function b() {})是表达式不是声明
+ * ！！立即执行函数作用域与外界完全隔离, 外界不能调用IIFE中的任何变量及定义
+ * 
+ * 1. 找到变量声明 var a ; (function a() {})是表达式不是声明
  * 2. 无声明了，开始按顺序执行
- * 3. b = 20 执行,function b()执行
- * 4. 立即执行函数的AO = { b:undefined -> function b() }
- * 5. function b()没有定义变量b，所以b是暗示全局变量，执行 b = 10，全局的 b由20->10
- * 6. 打印 b ，从作用域链找到最顶部的b，也就是立即执行函数的AO的b -> function b()
+ * 3. a = 888 => window.a =888; 执行, IFFE function a()执行
+ * 4. 立即执行函数的 AO = { a:undefined -> function a() }
+ * 5. (function a()) 作用域下找到 var a变量a，AO = { a:undefined -> function a() -> a:undefined }
+ * 6. 打印 a ，从作用域链找到最顶部的a，也就是立即执行函数的AO的a -> undefined
  * GO = {
- *     b: undefined -> 20 -> 10
+ *     a: undefined -> 888
  * }
  */
+var a = 888;
+(function a() {
+    console.log(a);// undefined
+    a = 5;
+    console.log(window.a);// 888
+    var a = 20;
+    console.log(a);// 20
+})();
+
+// (function a() {
+//     console.log(a);// f a() {...}
+//     a = 5;   // 更改不了 window.a也改不了(function a)
+//     console.log(window.a);// 888
+//     console.log(a);// f a() {...}
+// })();

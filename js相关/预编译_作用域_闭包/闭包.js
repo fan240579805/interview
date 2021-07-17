@@ -8,7 +8,7 @@ function test1() {
     function test2() {
         console.log(a);
     }
-    var a = 1;
+    let a = 1;
     // a执行结束 将test2返回出去,按理来说test1.AO应该被释放掉，
     // 但由于test2.[[scope]]仍然还有test1.AO，此时返回的 test1.AO -> GO
     // 所以外部test3 = test1() = test2,在外部仍然能访问test1的作用域
@@ -23,7 +23,7 @@ test3();// 依旧能访问到 a
 
 function ttt() {
     var n = 100;
-    function add() {
+    function add() {  
         n++;
         console.log(n);
     }
@@ -35,7 +35,7 @@ function ttt() {
     // 返回数组形式的闭包
     return [add, reduce];
 }
-
+ 
 var arr = ttt();
 // ttt.AO 始终存在
 arr[0]();// 101

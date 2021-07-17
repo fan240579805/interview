@@ -20,7 +20,7 @@ let proxy = new Proxy(target, {
 proxy.a = 100;
 console.log(target);
 console.log(proxy.a);
-
+console.log(proxy);
 
 let arr = [1]
 arr = new Proxy(arr, {
@@ -36,4 +36,4 @@ arr = new Proxy(arr, {
 console.log(arr[0]);
 arr[0] = 14;
 // arrProxy.push(1)
-console.log(arr.asd);
+console.log(arr);
