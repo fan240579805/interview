@@ -73,8 +73,8 @@ console.log(ta); //  2
  */
 var b = 20;
 (function b() {
-    b = 10;
     console.log(b);// f b(){...}
+    b = 10;
     console.log(window.b);
 })();
 /**

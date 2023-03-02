@@ -105,3 +105,17 @@ console.log(Function.__proto__  === Function.prototype); // true
 // 同理 Object 是 Function 也是 Object
 console.log(Object.__proto__ === Function.prototype);// true
 console.log(Object.__proto__ === Function.__proto__);// true
+
+/**
+ * 看这道题！
+ */
+console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+var ax = function () {}
+Object.prototype.bx = function () {console.log("bx")}
+Function.prototype.cx = function () {console.log("cx")}
+
+var fx = new ax()
+fx.bx() // bx
+fx.cx() // err
+ax.bx() // bx
+ax.cx() // cx

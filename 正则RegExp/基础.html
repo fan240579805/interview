@@ -49,19 +49,22 @@
     // console.log(reguser.test(res));
 
     let span = `
-        <span>
+        <span>，
             asdas
             hand
         </span>
     `
     // 所有内容[\s\S]都可以取
     console.log(span.match(/<span>[\s\S]+<\/span>/)[0]);
-    
+
     // 字符属性 \p{}
     const hd = "asdasdas2011.你好,加油";
     console.log(hd.match(/\p{L}/gu)); // L属性匹配字
     console.log(hd.match(/\p{P}/gu)); // P属性匹配标点符号
     console.log(hd.match(/\p{sc=Han}/gu));// 汉字匹配
+    let num = "1,000,000,000"
+    const regNum = /^\d+,(\d{3},)*\d{3}$/;
+    console.log(num.match(regNum));
 </script>
 
 </html>
